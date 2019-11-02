@@ -21,9 +21,12 @@ printf("%d\n", yearsOld);
 int year = yytext[0] - '0';
 year *= 10;
 year = year + (yytext[1] -'0');
+
 if( year >12){
+
 int yearsOld = (100 - year) + 19;
 printf("%d\n", yearsOld);
+
 }
 else{
 
@@ -31,9 +34,11 @@ int yearsOld = 19 - year;
 printf("%d\n", yearsOld);
 
 }
+
 }
 
 [\n|\s|\t| ]*.*[\n|\s|\t| ]* { printf( "INVALID\n"); }
+
 
 %%
 

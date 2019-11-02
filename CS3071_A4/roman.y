@@ -12,7 +12,11 @@ int yylex();
 %%
 
 romannum: 
+<<<<<<< HEAD
  | romannum num  EOL { printf("%d\n", $2); }
+=======
+ | romannum num EOL { printf("%d\n", $2); }
+>>>>>>> 7983030db955d86563904d06c79ea44e9af5653c
  ;
 
 num: term
@@ -24,11 +28,19 @@ num: term
   | C M {$$=900}
   | num I V {if($1 )$$ = $1 +4;}
   | num  I X { $$ = $1 + 9; }
+<<<<<<< HEAD
   | num X L { $$ = $1 + 40; } 
   | num L C { $$ = $1 + 90; }
   | num C D { $$ = $1 + 400; }
   | num C M { $$ = $1 + 900; }
   | num term { $$ = $1 + $2;}
+=======
+ | num X L { $$ = $1 + 40; } 
+ | num L C { $$ = $1 + 90; }
+ | num C D { $$ = $1 + 400; }
+ | num C M { $$ = $1 + 900; }
+ | num term { $$ = $1 + $2;}
+>>>>>>> 7983030db955d86563904d06c79ea44e9af5653c
 
 
 ;
