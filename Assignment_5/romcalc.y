@@ -14,7 +14,7 @@ void num_to_rom(int number);
 %%
 
 romannum: 
- | romannum exp EOL { printf("%d\n", $2); }
+ | romannum exp EOL { if ($2==0) printf("%Z\n"); else dec_to_roman($2);}
  ;
 
  
