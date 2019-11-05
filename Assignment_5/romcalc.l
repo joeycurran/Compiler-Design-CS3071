@@ -1,4 +1,4 @@
-%option noyywrap
+
 
 %{
 # include "romcalc.tab.h"

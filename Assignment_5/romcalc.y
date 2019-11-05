@@ -2,25 +2,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 void yyerror(char *s);
-int yylex();
-void num_to_rom(int number);
+int yyparse();
 
 %}
 
-%token z I V X D C M L 
-%token ADD SUB DIV MUL LB RB
+%token z I V X D C M L  
+%token ADD SUB DIV MUL
+%token LB RB
 %token EOL
 
 %%
 
 romannum: 
- | romannum exp EOL { printf("%d\n", $2); }
+ | romannum exp EOL { if ($2==0) printf("Z\n"); else ans_to_rom($2);}
  ;
 
  
  exp: factor 
 | exp ADD factor { $$ = $1 + $3; }
 | exp SUB factor { $$ = $1 - $3; }
+
  ;
 
 factor: brac
@@ -31,11 +32,9 @@ factor: brac
  brac: num
  | LB exp RB {$$ = $2; }
  | LB exp { yyerror("syntax error\n"); }
- | exp RB { yyerror("syntax error\n"); }
- | brac LB exp RB { $$ = $1 + $3; }
- | brac LB exp  { yyerror("syntax error\n"); }
- | brac exp RB { yyerror("syntax error\n"); }
- | brac exp {$$ = $2; } 
+
+
+ 
  ;
 
  num : term
@@ -56,31 +55,36 @@ factor: brac
  | z {$$=0;}
  | I V {$$=4;}
  | I X {$$=9;}
- | X L {$$=40}
- | X C {$$=90}
- | C D {$$=400}
- | C M {$$=900}
+ | X L {$$=40;}
+ | X C {$$=90;}
+ | C D {$$=400;}
+ | C M {$$=900;}
  | I {$$=1;}
  | V {$$=5;}
- | X {$$=10}
- | L {$$=50}
- | C {$$=100}
- | D {$$=500}
- | M {$$=1000}
+ | X {$$=10;}
+ | L {$$=50;}
+ | C {$$=100;}
+ | D {$$=500;}
+ | M {$$=1000;}
  ;
 
 %%
 
-void num_to_rom (int number) {
+void ans_to_rom (int number) {
   int neg = 0;
   if(number < 0) {
-    number += number*2;
+    number -= number*2;
     neg = 1;
   }
-  if (neg == 1) printf("-");
-
-  while (number > 0) {
-if(number >= 1000) {
+  	if (neg == 1){
+			printf("-");
+			
+		  } 
+	
+  	while (number > 0) {
+		  
+		  
+		if(number >= 1000) {
 			number -= 1000;
 			printf("M");
 		}
