@@ -14,7 +14,11 @@ int yyparse();
 %%
 
 romannum: 
+<<<<<<< HEAD
  | romannum exp EOL { if ($2==0) printf("Z\n"); else ans_to_rom($2);}
+=======
+ | romannum exp EOL { if ($2==0) printf("%Z\n"); else dec_to_roman($2);}
+>>>>>>> f25fa8a7ee1021204437e21d781434522abdd23d
  ;
 
  
