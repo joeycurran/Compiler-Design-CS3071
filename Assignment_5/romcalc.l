@@ -1,5 +1,4 @@
 
-
 %{
 # include "romcalc.tab.h"
 void yyerror(char *s);

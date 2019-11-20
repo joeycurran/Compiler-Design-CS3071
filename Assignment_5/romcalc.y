@@ -6,7 +6,7 @@ int yyparse();
 
 %}
 
-%token z I V X D C M L  
+%token Z I V X D C M L  
 %token ADD SUB DIV MUL
 %token LB RB
 %token EOL
@@ -14,11 +14,7 @@ int yyparse();
 %%
 
 romannum: 
-<<<<<<< HEAD
- | romannum exp EOL { if ($2==0) printf("Z\n"); else ans_to_rom($2);}
-=======
- | romannum exp EOL { if ($2==0) printf("%Z\n"); else dec_to_roman($2);}
->>>>>>> f25fa8a7ee1021204437e21d781434522abdd23d
+ | romannum exp EOL { if ($2==0) printf("%Z\n"); else ans_to_roman($2);}
  ;
 
  
@@ -36,9 +32,6 @@ factor: brac
  brac: num
  | LB exp RB {$$ = $2; }
  | LB exp { yyerror("syntax error\n"); }
-
-
- 
  ;
 
  num : term

@@ -12,13 +12,13 @@ int yylex();
 %%
 
 romannum: 
- | romannum num  EOL { printf("%d\n", $2); }
+ | romannum num EOL { printf("%d\n", $2); }
  
  ;
 
 num: term
   
-  | num I V {if($1 )$$ = $1 +4;}
+  | num I V {if($1 )$$ = $1 + 4;}
   | num I X { $$ = $1 + 9; }
   | num X L { $$ = $1 + 40; } 
   | num L C { $$ = $1 + 90; }
